@@ -2,6 +2,7 @@ package com.example.practice.rest;
 
 import com.example.practice.dao.BaseDao;
 import com.example.practice.dao.RecipeDao;
+import com.example.practice.model.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,11 @@ public class RecipeController {
         this.dao = dao;
     }
 
-    @PostMapping()
+    @PostMapping("save")
+    public ResponseEntity<?> save(Recipe recipe) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(dao.save(recipe));
+    }
+
 
 
 
